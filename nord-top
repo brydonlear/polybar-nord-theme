@@ -2,7 +2,7 @@
 [module/i3]
 type = internal/i3
 
-pin-workspaces = ${config.i3-pin-workspaces}
+pin-workspaces = true
 
 strip-wsnumbers = true
 
@@ -20,25 +20,25 @@ fuzzy-match = false
 format = <label-state> <label-mode>
 
 ; icons
-ws-icon-0 = 1:Home;
-ws-icon-1 = 2:Browser;
-ws-icon-2 = 3:Coding;
-ws-icon-3 = 4:Learning;
-ws-icon-4 = 5:Fun;
-ws-icon-5 = 25:Desktop;
-ws-icon-default = 
+;ws-icon-0 = 1:code
+;ws-icon-1 = 2:sys
+;ws-icon-2 = 3:books
+;ws-icon-3 = 4:web
+;ws-icon-4 = 5:Fun;
+;ws-icon-5 = 25:Desktop;
+;ws-icon-default = 
 
 ; color
-label-focused = 
+label-focused = %name%
 label-focused-underline = ${colors.nord7}
 label-focused-foreground = ${colors.nord7}
 label-focused-padding = 2
 
-label-unfocused = •
+label-unfocused = %name%
 label-unfocused-foreground = ${colors.nord9}
 label-unfocused-padding = 2
 
-label-urgent = 
+label-urgent =  %name%
 label-urgent-foreground = ${colors.urgent}
 label-urgent-background = ${colors.foreground}
 label-urgent-padding = 2
@@ -50,16 +50,16 @@ label-separator-foreground = ${colors.buffer}
 [module/bspwm]
 type = internal/bspwm
 
-ws-icon-0 = I;
-ws-icon-1 = II;
-ws-icon-2 = III;
-ws-icon-3 = IV;
-ws-icon-4 = V;
-ws-icon-5 = VI;
-ws-icon-6 = VII;
-ws-icon-7 = VIII;
-ws-icon-8 = IX;
-ws-icon-9 = X;
+ws-icon-0 = ;
+ws-icon-1 = ;
+ws-icon-2 = ;
+ws-icon-3 = ;
+ws-icon-4 = ;
+ws-icon-5 = ;
+ws-icon-6 = ;
+ws-icon-7 = ;
+ws-icon-8 = ;
+ws-icon-9 = ;
 
 
 label-focused = %icon%
@@ -96,7 +96,7 @@ label-focused-padding = 2
 label-focused-foreground = ${colors.nord7}
 label-focused-underline = ${colors.nord7}
 
-label-unfocused = 
+label-unfocused = %name% 
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.urgent}
@@ -186,7 +186,7 @@ master-mixer = ${config.master-mixer}
 format-volume = <ramp-volume> <label-volume>
 format-volume-underline = ${colors.function}
 
-label-muted =  muted
+label-muted = muted
 label-muted-foreground = ${colors.urgent}
 label-muted-underline = ${colors.urgent}
 
@@ -207,12 +207,6 @@ type = internal/backlight
 card = intel_backlight
 
 enable-scroll = true
-
-; Use xbacklight when the default backlight does not work.
-; For more details check https://github.com/polybar/polybar/wiki/Module:-xbacklight.
-; [module/backlight]
-; type = internal/xbacklight
-; enable-scroll = true
 
 ; Format
 format = <ramp> <label>
@@ -284,8 +278,8 @@ interface = ${config.interface}
 
 interval = 1
 
-format-connected = %{A1:networkmanager_dmenu:}<ramp-signal>%{A}
-format-disconnected = %{A1:networkmanager_dmenu:}<label-disconnected>%{A}
+format-connected = %{A1:nm-applet:}%{A}
+format-disconnected = %{A1:nm-applet:}<label-disconnected>%{A}
 
 label-disconnected = 
 label-disconnected-foreground = ${colors.urgent}
@@ -311,7 +305,7 @@ ramp-signal-3-underline = ${colors.success}
 type = custom/script
 
 exec = ~/.config/polybar/scripts/clash.sh
-interval = 3
+interval = 0
 
 click-left = ~/.config/polybar/scripts/clash.sh toggle
 
@@ -319,7 +313,7 @@ click-left = ~/.config/polybar/scripts/clash.sh toggle
 type = custom/script
 
 exec = ~/.config/polybar/scripts/onedrive.sh
-interval = 3
+interval = 0
 
 click-left = ~/.config/polybar/scripts/onedrive.sh toggle
 
@@ -327,7 +321,7 @@ click-left = ~/.config/polybar/scripts/onedrive.sh toggle
 type = custom/script
 
 exec = ~/.config/polybar/scripts/clipmenu.sh
-interval = 3
+interval = 0
 
 click-left = ~/.config/polybar/scripts/clipmenu.sh menu
 click-right = ~/.config/polybar/scripts/clipmenu.sh toggle
@@ -341,3 +335,30 @@ content-foreground = ${colors.background}
 content-padding = 3
 
 click-left = ~/.config/polybar/scripts/rofi_run
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+label-open = 
+label-open-foreground = ${colors.background}
+label-open-background = ${colors.nord9}
+label-open-padding = 3
+label-close = 
+label-close-foreground = ${colors.background}
+label-close-background = ${colors.nord9}
+label-close-padding = 4
+
+menu-0-0 = 
+menu-0-0-foreground = ${colors.urgent}
+menu-0-0-padding = 2
+menu-0-0-exec = shutdown
+menu-0-1 = 
+menu-0-1-foreground = ${colors.warning}
+menu-0-1-padding = 2
+menu-0-1-exec = reboot
+menu-0-2 = 
+menu-0-2-foreground = ${colors.warning}
+menu-0-2-padding = 2
+menu-0-2-exec = systemctl suspend

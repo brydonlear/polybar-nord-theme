@@ -1,31 +1,4 @@
 ; vim:ft=dosini
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-label-open = 
-label-open-foreground = ${colors.background}
-label-open-background = ${colors.nord9}
-label-open-padding = 3
-label-close = 
-label-close-foreground = ${colors.background}
-label-close-background = ${colors.nord9}
-label-close-padding = 4
-
-menu-0-0 = 
-menu-0-0-foreground = ${colors.urgent}
-menu-0-0-padding = 2
-menu-0-0-exec = shutdown
-menu-0-1 = 
-menu-0-1-foreground = ${colors.warning}
-menu-0-1-padding = 2
-menu-0-1-exec = reboot
-menu-0-2 = 
-menu-0-2-foreground = ${colors.warning}
-menu-0-2-padding = 2
-menu-0-2-exec = systemctl suspend
-
 [module/cpu]
 type = internal/cpu
 interval = 1
@@ -59,11 +32,11 @@ label = %gb_used%/%gb_total%
 ramp-used-0 = 
 ramp-used-0-foreground = ${colors.success}
 
-ramp-used-1 = 
-ramp-used-1-foreground = ${colors.warning}
+ramp-used-4 = 
+ramp-used-4-foreground = ${colors.warning}
 
-ramp-used-2 = 
-ramp-used-2-foreground = ${colors.urgent}
+ramp-used-7 = 
+ramp-used-7-foreground = ${colors.urgent}
 
 [module/github]
 type= internal/github
@@ -133,8 +106,6 @@ ramp-1-foreground = ${colors.nord8}
 ramp-2-foreground = ${colors.success}
 ramp-3-foreground = ${colors.success}
 ramp-4-foreground = ${colors.warning}
-
-interval = 10
 
 [module/info-hackspeed]
 type = custom/script
